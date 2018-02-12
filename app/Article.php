@@ -6,8 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Article extends Model
 {
+    protected $guarded = [];
+
     public function author()
     {
-        return $this->belongsToMany(User::class, 'author_id');
+        return $this->belongsTo(User::class, 'author_id');
     }
 }
