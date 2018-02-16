@@ -17,5 +17,5 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/creations', 'CreationController@index')->name('creations');
 Route::get('/creations/{creation}', 'CreationController@show')->name('creations.show');
 Route::get('/articles', 'ArticleController@index')->name('articles');
-Route::get('/articles/{article}', 'ArticleController@index')->name('articles.show');
-Route::get('/contact', 'HomeController@index')->name('contact');
+Route::get('/articles/{article}', 'ArticleController@show')->name('articles.show');
+Route::get('/contact', 'HomeController@contact')->name('contact');

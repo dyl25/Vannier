@@ -2,6 +2,12 @@
     margin-bottom: 0;
 }
 
+@media (max-width: 600px) {
+    .card {
+        min-height: inherit;
+    }
+}
+
 .limit-height-main .card img{
     max-height: 309px;
 }
@@ -11,6 +17,7 @@
     background-attachment: fixed;
     background-repeat: no-repeat;
     background-size: 100% 100%;
+    min-height: 500px;
 }
 
 links-footer li a {
