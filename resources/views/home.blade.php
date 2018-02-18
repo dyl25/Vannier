@@ -45,7 +45,7 @@ Brins d'osier - Accueil
         <h2>Mes créations</h2>
         @forelse($creations as $creation)
         <div class="col m4">
-            <div class="card medium">
+            <div class="card medium hoverable">
                 <div class="card-image waves-effect waves-block waves-light">
                     <img class="activator responsive-img" src="{{ asset($creation->image) }}">
                 </div>
@@ -88,7 +88,7 @@ Brins d'osier - Accueil
         <h2>Mes billets d'humeur</h2>
         @forelse($articles as $article)
         <div class="col m4">
-            <article class="card small">
+            <article class="card small hoverable">
                 <div class="card-content">
                     <span class="card-title">{{$article->title}}</span>
                     <p>{{$article->content}}</p>

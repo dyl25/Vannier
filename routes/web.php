@@ -19,3 +19,8 @@ Route::get('/creations/{creation}', 'CreationController@show')->name('creations.
 Route::get('/articles', 'ArticleController@index')->name('articles');
 Route::get('/articles/{article}', 'ArticleController@show')->name('articles.show');
 Route::get('/contact', 'HomeController@contact')->name('contact');
+Route::post('/contact', 'HomeController@sendMail')->name('contact.post');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
