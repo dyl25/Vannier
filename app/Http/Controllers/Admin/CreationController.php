@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Creation;
 
 class CreationController extends Controller
 {
@@ -14,7 +15,8 @@ class CreationController extends Controller
      */
     public function index()
     {
-        //
+        $creations = Creation::latest('id')->paginate(20);
+        return view('admin.creation.index', compact('creations'));
     }
 
     /**
@@ -24,7 +26,7 @@ class CreationController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.creation.create');
     }
 
     /**

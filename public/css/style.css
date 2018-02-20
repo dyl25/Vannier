@@ -79,6 +79,13 @@ nav li.dropdown-container {
 /* End Navbar */
 
 /* Backoffice */
+.navbar-container {
+    background-color: inherit;
+    width: inherit;
+    height: inherit;
+    line-height: inherit;
+}
+
 .sideBack {
     position: fixed;
     padding: 0;
