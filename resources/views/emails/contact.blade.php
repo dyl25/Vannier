@@ -1,4 +1,4 @@
-<<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="lang="{{ app()->getLocale() }}"">
 <head>
 </head>

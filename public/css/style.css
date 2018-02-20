@@ -4,7 +4,7 @@ display: flex;
 min-height: 100vh;
 flex-direction: column;
 }
-
+/*174*/
 main {
 flex: 1 0 auto;
 }
@@ -69,6 +69,14 @@ hr {
     background-repeat: no-repeat;
     background-size: 100% 100%;
 }
+
+/* Navbar */
+
+nav li.dropdown-container {
+    min-width: 174px;
+}
+
+/* End Navbar */
 
 /* Backoffice */
 .sideBack {

@@ -19,6 +19,7 @@
         <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
         <script src="{{ asset('js/app.js') }}"></script>
+        <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
     </head>
     <body>
         <div id="app">
@@ -60,9 +61,9 @@
                         </div>
                         <div class="col l3 s12 reseautage">
                             <ul>
-                                <li><a href="#" class="tooltipped" data-position="right" data-delay="50" data-tooltip="Facebook"><i class="fa fa-facebook-square" aria-hidden="true"></i></a></li>
-                                <li><a href="#" class="tooltipped" data-position="right" data-delay="50" data-tooltip="Twitter"><i class="fa fa-twitter-square" aria-hidden="true"></i></a></li>
-                                <li><a href="#" class="tooltipped" data-position="right" data-delay="50" data-tooltip="Google +"><i class="fa fa-google-plus-square" aria-hidden="true"></i></a></li>
+                                <li><a href="#" class="tooltipped white-text" data-position="right" data-delay="50" data-tooltip="Facebook"><i class="fab fa-facebook fa-3x"></i></a></li>
+                                <li><a href="#" class="tooltipped white-text" data-position="right" data-delay="50" data-tooltip="Twitter"><i class="fab fa-twitter-square fa-3x"></i></a></li>
+                                <li><a href="#" class="tooltipped white-text" data-position="right" data-delay="50" data-tooltip="Google +"><i class="fab fa-google-plus-square fa-3x"></i></a></li>
                             </ul>
                         </div>
                     </div>
