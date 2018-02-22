@@ -5,7 +5,7 @@ Espace création
 @endsection
 
 @section('content')
-<!-- Articles table -->
+<!-- Creations table -->
 <section class="card-panel grey lighten-4 hoverable">
     <h2>Liste des créations <i class="material-icons medium">shopping_basket</i></h2>
     <a href="{{ route('creations.create') }}" class="btn btn-primary">Ajouter une création</a>
@@ -15,6 +15,7 @@ Espace création
                 <th>Id</th>
                 <th>Nom</th>
                 <th>Description</th>
+                <th>Catégorie</th>
                 <th>Date de création</th>
                 <th>Action</th>
             </tr>
@@ -24,7 +25,12 @@ Espace création
             <tr>
                 <td>{{ $creation->id }}</td>
                 <td>{{ $creation->name }}</td>
-                <td>{{ str_limit($creation->description, 150) }}</td>
+                <td>{{ str_limit($creation->description, 50) }}</td>
+                <td>
+                @foreach($creation->categories as $category)
+                <span class="chip">{{ $category->name }}</span> 
+                @endforeach
+                </td>
                 <td>{{ $creation->created_at->format('d/m/Y') }}</td>
                 <td>
                     <a href="{{ route('creations.edit', $creation->id) }}"><i class="material-icons tooltipped" data-position="top" data-delay="50" data-tooltip="éditer">mode_edit</i></a>

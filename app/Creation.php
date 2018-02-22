@@ -6,6 +6,18 @@ use Illuminate\Database\Eloquent\Model;
 
 class Creation extends Model
 {
+    protected $guarded = [];
+    protected $with = ['categories'];
+
+   /* protected static function boot()
+    {
+        parent::boot();
+        //Load directly the relation for all scopes
+        static::addGlobalScope('categories', function($builder){
+            $builder->with('categories');
+        });
+    }*/
+
     public function categories()
     {
         return $this->belongsToMany(Category::class);

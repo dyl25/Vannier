@@ -7,4 +7,5 @@ $(document).ready(function () {
         outDuration: 225,
         belowOrigin: true
     });
+    $('select').material_select();
 });

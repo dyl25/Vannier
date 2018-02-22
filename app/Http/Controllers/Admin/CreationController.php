@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Creation;
+use App\Category;
 
 class CreationController extends Controller
 {
@@ -26,7 +27,9 @@ class CreationController extends Controller
      */
     public function create()
     {
-        return view('admin.creation.create');
+        $categories = Category::all();
+
+        return view('admin.creation.create', compact('categories'));
     }
 
     /**
@@ -37,7 +40,22 @@ class CreationController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //dd($request);
+        $this->validate($request, [
+            'category' => 'required|exists:categories,id|max:3',
+            'name' => 'required',
+            'content' => 'required'
+        ]);
+
+        $creation = Creation::create([
+            'creator_id' => 1,
+            'name' => request('name'),
+            'description' => request('content')
+        ]);
+
+        $creation->categories()->attach(request('category'));
+
+        return redirect()->route('creations.index');
     }
 
     /**
