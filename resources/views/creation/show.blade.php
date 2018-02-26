@@ -9,7 +9,7 @@
     <div class="row">
         <article>
             <div class="row">
-                <img class="responsive-img" src="{{ asset($creation->image) }}" >
+                <img class="responsive-img" src="{{ asset('img/creations/'.$creation->image) }}" >
                 <h2>{{ $creation->name }}</h2>
                 <p>
                     @foreach($creation->categories as $category)

@@ -2,12 +2,12 @@
 
 $factory->define(App\Creation::class, function (Faker\Generator $faker) {
     $images = [
-        'img/panier1.jpg',
-        'img/panier2.jpg',
-        'img/panier3.jpg',
-        'img/panier4.jpg',
-        'img/panier5.jpg',
-        'img/panier6.jpg'
+        'panier1.jpg',
+        'panier2.jpg',
+        'panier3.jpg',
+        'panier4.jpg',
+        'panier5.jpg',
+        'panier6.jpg'
     ];
 
     return [

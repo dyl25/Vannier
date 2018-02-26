@@ -12,7 +12,7 @@ Ajout d'une création
     @include('admin.layouts.errors')
     @endif 
 
-    <form method="POST" action="{{ route('creations.store') }}" class="col s12">
+    <form method="POST" action="{{ route('creations.store') }}" enctype="multipart/form-data" class="col s12">
         <fieldset>
             @csrf
 
@@ -37,7 +37,18 @@ Ajout d'une création
                 <label for="content">Description de la création</label>
             </div>
 
-            <button name="btSendCreation" class="btn" type="submit">Ajouter la création</button>
+            <div class="file-field input-field">
+                <div class="btn">
+                    <span>Image de la création</span>
+                    <input type="file" name="creationImage">
+                </div>
+                <div class="file-path-wrapper">
+                    <input class="file-path validate" type="text" name="filepath">
+                </div>
+            </div>
+
+            <button name="btSendCreation" class="btn green" type="submit">Ajouter la création</button>
+            <input type="reset" value="Réinitialiser le formulaire" class="btn red">
 
         </fieldset>
     </form>

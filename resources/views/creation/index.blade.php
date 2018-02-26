@@ -21,7 +21,7 @@ Brins d'osier - Mes créations
             <div class="col s12 m4">
                 <article class="card large hoverable">
                     <div class="card-image waves-effect waves-block waves-light">
-                        <a href="{{ route('creations.show', $creation->id) }}"><img class="activator responsive-img" src="{{ asset($creation->image) }}"></a>
+                        <a href="{{ route('creations.show', $creation->id) }}"><img class="activator responsive-img" src="{{ asset('img/creations/'.$creation->image) }}"></a>
                     </div>
                     <div class="card-content">
                         <span class="card-title activator grey-text text-darken-4">{{ $creation->name }}</span>

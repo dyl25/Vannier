@@ -24,7 +24,7 @@ Espace création
             @foreach($creations as $creation)
             <tr>
                 <td>{{ $creation->id }}</td>
-                <td>{{ $creation->name }}</td>
+                <td><a href="{{ route('creations.show', $creation->id) }}">{{ $creation->name }}</a></td>
                 <td>{{ str_limit($creation->description, 50) }}</td>
                 <td>
                 @foreach($creation->categories as $category)

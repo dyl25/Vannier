@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Creation;
 use App\Category;
+use Intervention\Image\Facades\Image;
 
 class CreationController extends Controller
 {
@@ -42,16 +43,30 @@ class CreationController extends Controller
     {
         //dd($request);
         $this->validate($request, [
-            'category' => 'required|exists:categories,id|max:3',
-            'name' => 'required',
-            'content' => 'required'
+            'category' => 'bail|required|exists:categories,id|max:3',
+            'name' => 'bail|required',
+            'content' => 'bail|required',
+            'creationImage' => 'nullable|image'
         ]);
 
-        $creation = Creation::create([
-            'creator_id' => 1,
-            'name' => request('name'),
-            'description' => request('content')
-        ]);
+        $creation = new Creation();
+
+        $creation->creator_id = 1;
+        $creation->name = request('name');
+        $creation->description = request('content');
+
+        if($request->hasFile('creationImage')) {
+
+            $image = $request->file('creationImage');
+            $fileName = time().'.'.$image->getClientOriginalExtension();
+            $location = public_path('img/creations/'.$fileName);
+
+            Image::make($image)->resize(960,640)->save($location);
+
+            $creation->image = $fileName;
+        }
+
+        $creation->save();
 
         $creation->categories()->attach(request('category'));
 
@@ -64,9 +79,9 @@ class CreationController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Creation $creation)
     {
-        //
+        return view('admin.creation.show', compact('creation'));
     }
 
     /**
