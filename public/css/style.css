@@ -70,6 +70,10 @@ hr {
     background-size: 100% 100%;
 }
 
+article {
+    margin-top: 20px;
+}
+
 /* Navbar */
 
 nav li.dropdown-container {

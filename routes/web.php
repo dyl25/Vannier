@@ -9,13 +9,15 @@
 | routes are loaded by the RouteServiceProvider within a group which
 | contains the "web" middleware group. Now create something great!
 |
-*/
+ */
 
 Auth::routes();
 
-Route::get('/backoffice', 'Admin\DashboardController@index')->name('dashboard');
-Route::resource('/backoffice/creations', 'Admin\CreationController');
-Route::resource('/backoffice/articles', 'Admin\ArticleController');
+Route::name('admin.')->group(function () {
+    Route::get('/backoffice', 'Admin\DashboardController@index')->name('dashboard');
+    Route::resource('/backoffice/creations', 'Admin\CreationController');
+    Route::resource('/backoffice/articles', 'Admin\ArticleController');
+});
 
 Route::get('/', 'HomeController@index');
 

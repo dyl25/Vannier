@@ -41,11 +41,10 @@ class CreationController extends Controller
      */
     public function store(Request $request)
     {
-        //dd($request);
         $this->validate($request, [
             'category' => 'bail|required|exists:categories,id|max:3',
-            'name' => 'bail|required',
-            'content' => 'bail|required',
+            'name' => 'bail|required|min:5',
+            'content' => 'bail|required|min:10',
             'creationImage' => 'nullable|image'
         ]);
 
@@ -61,7 +60,10 @@ class CreationController extends Controller
             $fileName = time().'.'.$image->getClientOriginalExtension();
             $location = public_path('img/creations/'.$fileName);
 
-            Image::make($image)->resize(960,640)->save($location);
+            Image::make($image)->resize(null,600, function($constraint) {
+                $constraint->aspectRatio();
+            })
+            ->save($location);
 
             $creation->image = $fileName;
         }
@@ -90,9 +92,11 @@ class CreationController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Creation $creation)
     {
-        //
+        $categories = Category::all();
+
+        return view('admin.creation.edit', compact('creation','categories'));
     }
 
     /**
@@ -102,9 +106,34 @@ class CreationController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Creation $creation)
     {
-        //
+        $this->validate($request, [
+            'category' => 'bail|required|exists:categories,id|max:3',
+            'name' => 'bail|required|min:5',
+            'content' => 'bail|required|min:10',
+            'creationImage' => 'nullable|image'
+        ]);
+
+        if ($request->hasFile('creationImage')) {
+
+            $image = $request->file('creationImage');
+            $fileName = time() . '.' . $image->getClientOriginalExtension();
+            $location = public_path('img/creations/' . $fileName);
+
+            Image::make($image)->resize(null, 600, function ($constraint) {
+                $constraint->aspectRatio();
+            })
+                ->save($location);
+
+            $creation->image = $fileName;
+        }
+
+        $creation->save();
+
+        $creation->categories()->attach(request('category'));
+
+        return redirect()->route('admin.creation.index');
     }
 
     /**

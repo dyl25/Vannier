@@ -6,7 +6,7 @@
             <li><a href="{{ route('creations') }}">Mes créations</a></li>
             <li><a href="{{ route('articles') }}">Articles</a></li>
             <li><a href="{{ route('contact') }}">Qui suis-je?</a></li>
-            <li><a href="{{ route('dashboard') }}">Backoffice</a></li>
+            <li><a href="{{ route('admin.dashboard') }}">Backoffice</a></li>
             <!-- Authentication Links -->
             @guest
             <li><a href="{{ route('login') }}">Login</a></li>

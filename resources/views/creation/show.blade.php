@@ -8,7 +8,7 @@
 <div class="container">
     <div class="row">
         <article>
-            <div class="row">
+            <div class="row center-align">
                 <img class="responsive-img" src="{{ asset('img/creations/'.$creation->image) }}" >
                 <h2>{{ $creation->name }}</h2>
                 <p>
