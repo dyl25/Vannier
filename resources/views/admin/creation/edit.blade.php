@@ -12,8 +12,9 @@ Modification d'une création
     @include('admin.layouts.errors')
     @endif 
 
-    <form method="PATCH" action="{{ route('admin.creations.edit', $creation->id) }}" enctype="multipart/form-data" class="col s12">
+    <form method="POST" action="{{ route('admin.creations.update', $creation->id) }}" enctype="multipart/form-data" class="col s12">
         <fieldset>
+            @method('PATCH')
             @csrf
 
             <div class="input-field">

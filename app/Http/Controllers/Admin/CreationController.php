@@ -54,16 +54,16 @@ class CreationController extends Controller
         $creation->name = request('name');
         $creation->description = request('content');
 
-        if($request->hasFile('creationImage')) {
+        if ($request->hasFile('creationImage')) {
 
             $image = $request->file('creationImage');
-            $fileName = time().'.'.$image->getClientOriginalExtension();
-            $location = public_path('img/creations/'.$fileName);
+            $fileName = time() . '.' . $image->getClientOriginalExtension();
+            $location = public_path('img/creations/' . $fileName);
 
-            Image::make($image)->resize(null,600, function($constraint) {
+            Image::make($image)->resize(null, 600, function ($constraint) {
                 $constraint->aspectRatio();
             })
-            ->save($location);
+                ->save($location);
 
             $creation->image = $fileName;
         }
@@ -72,7 +72,7 @@ class CreationController extends Controller
 
         $creation->categories()->attach(request('category'));
 
-        return redirect()->route('creations.index');
+        return redirect()->route('admin.creations.index');
     }
 
     /**
@@ -96,7 +96,7 @@ class CreationController extends Controller
     {
         $categories = Category::all();
 
-        return view('admin.creation.edit', compact('creation','categories'));
+        return view('admin.creation.edit', compact('creation', 'categories'));
     }
 
     /**
@@ -123,17 +123,20 @@ class CreationController extends Controller
 
             Image::make($image)->resize(null, 600, function ($constraint) {
                 $constraint->aspectRatio();
-            })
-                ->save($location);
+            })->save($location);
+
+            //delete the old picture
+            unlink(public_path('img/creations/' . $creation->image));
 
             $creation->image = $fileName;
         }
 
         $creation->save();
+        
+        //update pivot table
+        $creation->categories()->sync(request('category'));
 
-        $creation->categories()->attach(request('category'));
-
-        return redirect()->route('admin.creation.index');
+        return redirect()->route('admin.creations.index');
     }
 
     /**
