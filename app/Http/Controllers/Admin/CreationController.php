@@ -132,7 +132,7 @@ class CreationController extends Controller
         }
 
         $creation->save();
-        
+
         //update pivot table
         $creation->categories()->sync(request('category'));
 
@@ -142,11 +142,19 @@ class CreationController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  Creation $creation
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Creation $creation)
     {
-        //
+        //delete the picture of the creation
+        unlink(public_path('img/creations/' . $creation->image));
+
+        //detach the creation from the pivot table
+        $creation->categories()->detach();
+
+        $creation->delete();
+
+        return redirect()->route('admin.creations.index');
     }
 }
