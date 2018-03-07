@@ -34,13 +34,11 @@ Espace création
                 <td>{{ $creation->created_at->format('d/m/Y') }}</td>
                 <td>
                     <a href="{{ route('admin.creations.edit', $creation->id) }}"><i class="material-icons tooltipped" data-position="top" data-delay="50" data-tooltip="éditer">mode_edit</i></a>
-                    <a href="#"><!--<i class="material-icons red-text tooltipped" data-position="bottom" data-delay="50" data-tooltip="supprimer">delete</i>-->
-                        <form action="{{ route('admin.creations.destroy', $creation->id) }}" method="post">
-                            @method('DELETE')
-                            @csrf
-                            <button type="submit" name="btSendDelete"><i class="material-icons red-text tooltipped" data-position="bottom" data-delay="50" data-tooltip="supprimer">delete</i></button>
-                        </form>
-                    </a>
+                    <form action="{{ route('admin.creations.destroy', $creation->id) }}" method="post">
+                        @method('DELETE')
+                        @csrf
+                        <button type="submit" name="btSendDelete"><i class="material-icons red-text tooltipped" data-position="bottom" data-delay="50" data-tooltip="supprimer">delete</i></button>
+                    </form>
                 </td>
             </tr>
             @endforeach

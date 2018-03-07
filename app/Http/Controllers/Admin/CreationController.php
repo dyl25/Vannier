@@ -43,7 +43,7 @@ class CreationController extends Controller
     {
         $this->validate($request, [
             'category' => 'bail|required|exists:categories,id|max:3',
-            'name' => 'bail|required|min:5',
+            'name' => 'bail|required|min:5|max:191',
             'content' => 'bail|required|min:10',
             'creationImage' => 'nullable|image'
         ]);

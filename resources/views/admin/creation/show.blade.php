@@ -41,7 +41,11 @@ Vue de la création {{$creation->name}}
                 </div>
                 <hr>
                 <a class="btn waves-effect" href="{{ route('admin.creations.edit', $creation->id) }}"><i class="material-icons">mode_edit</i> Editer</a>
-                <a class="btn waves-effect red" href="{{ route('admin.creations.destroy', $creation->id) }}"><i class="material-icons">delete</i> Supprimer</a>
+                <form action="{{ route('admin.creations.destroy', $creation->id) }}" method="post">
+                    @method('DELETE')
+                    @csrf
+                    <button class="btn waves-effect red" type="submit" name="btSendDelete"><i class="material-icons">delete</i> Supprimer</button>
+                </form>
             </div>
         </div>
     </div>

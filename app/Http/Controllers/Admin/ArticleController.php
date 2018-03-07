@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Article;
 
 class ArticleController extends Controller
 {
@@ -14,7 +15,8 @@ class ArticleController extends Controller
      */
     public function index()
     {
-        //
+        $articles = Article::latest('id')->paginate(20);
+        return view('admin.article.index', compact('articles'));
     }
 
     /**
@@ -24,7 +26,7 @@ class ArticleController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.article.create');
     }
 
     /**
@@ -35,7 +37,21 @@ class ArticleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'title' => 'bail|required|min:5|max:191',
+            'content' => 'required|min:10'
+        ]);
+
+        $title = request('title');
+
+        Article::create([
+            'title' => $title,
+            'slug' => str_slug($title),
+            'author_id' => 1,
+            'content' => request('content')
+        ]);
+
+        return redirect()->route('admin.articles.index');
     }
 
     /**
@@ -44,9 +60,9 @@ class ArticleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Article $article)
     {
-        //
+        return view('admin.article.show', compact('article'));
     }
 
     /**
@@ -55,9 +71,9 @@ class ArticleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Article $article)
     {
-        //
+        return view('admin.article.edit', compact('article'));
     }
 
     /**
@@ -67,9 +83,23 @@ class ArticleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Article $article)
     {
-        //
+        $this->validate($request, [
+            'title' => 'bail|required|min:5|max:191',
+            'content' => 'required|min:10'
+        ]);
+
+        $title = request('title');
+
+        $article->update([
+            'title' => $title,
+            'slug' => str_slug($title),
+            'author_id' => 1,
+            'content' => request('content')
+        ]);
+
+        return redirect()->route('admin.articles.index');
     }
 
     /**
@@ -78,8 +108,10 @@ class ArticleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Article $article)
     {
-        //
+        $article->delete();
+
+        return redirect()->route('admin.articles.index');
     }
 }
