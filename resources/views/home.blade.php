@@ -44,7 +44,7 @@ Brins d'osier - Accueil
     <section class="row limit-height-main" >
         <h2>Mes créations</h2>
         @forelse($creations as $creation)
-        <div class="col m4">
+        <div class="col s12 m4">
             <div class="card medium hoverable">
                 <div class="card-image waves-effect waves-block waves-light">
                     <img class="activator responsive-img" src="{{ asset('img/creations/'.$creation->image) }}">
@@ -85,18 +85,18 @@ Brins d'osier - Accueil
 
 <div class="container">
     <section class="row">
-        <h2>Mes billets d'humeur</h2>
+        <h2>Mes billets</h2>
         @forelse($articles as $article)
-        <div class="col m4">
+        <div class="col s12 m4">
             <article class="card small hoverable">
                 <div class="card-content">
-                    <span class="card-title">{{$article->title}}</span>
-                    <p>{{$article->content}}</p>
+                    <a href="{{ route('articles.show', $article->id) }}" class="card-title grey-text text-darken-4">{{ $article->title }}</a>
+                    <p>{{ str_limit($article->content, 150) }}</p>
+                    <p>id= {{$article->id}}</p>
                 </div>
                 <div class="card-action">
-                    <a href="#">Id = {{$article->id}}</a>
-                    <a href="#">This is a link</a>
-                    <a href="#">This is a link</a>
+                <a href="{{ route('articles.show', $article->id) }}">Voir l'article</a>
+                <a href="#">Créé le {{$article->created_at->format('d/m/Y')}}</a>
                 </div>
             </article>
         </div>

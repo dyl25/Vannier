@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-Brins d'osier - Articles
+Brins d'osier - Billets
 @endsection
 
 @section('content')
@@ -21,7 +21,7 @@ Brins d'osier - Articles
             <div class="col s12 m4">
                 <article class="card small hoverable">
                     <div class="card-content">
-                        <span class="card-title activator grey-text text-darken-4">{{ $article->title }}</span>
+                        <a href="{{ route('articles.show', $article->id) }}" class="card-title grey-text text-darken-4">{{ $article->title }}</a>
                         <p>{{ str_limit($article->content, 150) }}</p>
                         <p>id= {{$article->id}}</p>
                     </div>
@@ -34,7 +34,7 @@ Brins d'osier - Articles
             @empty
             <div class="col m5 offset-m3 offset-s3">
                 <div class="card-panel">
-                    <p class="center-align">Il n'y a aucun article pour le moment.</p>
+                    <p class="center-align">Il n'y a aucun billet pour le moment.</p>
                 </div>
             </div>
             @endforelse
