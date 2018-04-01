@@ -60,10 +60,12 @@ class CreationController extends Controller
             $fileName = time() . '.' . $image->getClientOriginalExtension();
             $location = public_path('img/creations/' . $fileName);
 
-            Image::make($image)->resize(null, 600, function ($constraint) {
+            /*Image::make($image)->resize(null, 600, function ($constraint) {
                 $constraint->aspectRatio();
             })
-                ->save($location);
+                ->save($location);*/
+
+            Image::make($image)->fit(900, 550)->save($location);
 
             $creation->image = $fileName;
         }

@@ -28,7 +28,7 @@ Vue de l'article {{$article->title}}
                 </div>
                 <hr>
                 <a class="btn waves-effect" href="{{ route('admin.articles.edit', $article->id) }}"><i class="material-icons">mode_edit</i> Editer</a>
-                <form action="{{ route('admin.articles.destroy', $article->id) }}" method="post">
+                <form action="{{ route('admin.articles.destroy', $article->id) }}" method="post" class="inline">
                     @method('DELETE')
                     @csrf
                     <button class="btn waves-effect red" type="submit" name="btSendDelete"><i class="material-icons">delete</i> Supprimer</button>

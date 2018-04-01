@@ -30,10 +30,10 @@ Espace article
                 <td>{{ $article->created_at->format('d/m/Y') }}</td>
                 <td>
                     <a href="{{ route('admin.articles.edit', $article->id) }}"><i class="material-icons tooltipped" data-position="top" data-delay="50" data-tooltip="éditer">mode_edit</i></a>
-                    <form action="{{ route('admin.articles.destroy', $article->id) }}" method="post">
+                    <form action="{{ route('admin.articles.destroy', $article->id) }}" method="post" class="button-form">
                         @method('DELETE')
                         @csrf
-                        <button type="submit" name="btSendDelete"><i class="material-icons red-text tooltipped" data-position="bottom" data-delay="50" data-tooltip="supprimer">delete</i></button>
+                        <button type="submit" name="btSendDelete"><i class="material-icons red-text">delete</i></button>
                     </form>
                 </td>
             </tr>

@@ -8,16 +8,10 @@ Vue de la création {{$creation->name}}
 <!-- Articles table -->
 <article class="card-panel grey lighten-4 hoverable">
     <div class="row">
-        <div class="center-align">
-        <img src="{{asset('img/creations/'.$creation->image)}}" alt="Image de la création" class="responsive-img">
+        <div class="col m9">
+            <img src="{{asset('img/creations/'.$creation->image)}}" alt="Image de la création" class="responsive-img">
         </div>
-    </div>
-    <div class="row">
-        <div class="col m8">
-            <h2>{{ $creation->name }}</h2>
-            <p>{{ $creation->description }}</p>
-        </div>
-        <div class="col 4">
+        <div class="col m3">
             <div class="card-panel">
                 <div>
                     <label>Url:</label>
@@ -41,13 +35,20 @@ Vue de la création {{$creation->name}}
                 </div>
                 <hr>
                 <a class="btn waves-effect" href="{{ route('admin.creations.edit', $creation->id) }}"><i class="material-icons">mode_edit</i> Editer</a>
-                <form action="{{ route('admin.creations.destroy', $creation->id) }}" method="post">
+                <form action="{{ route('admin.creations.destroy', $creation->id) }}" method="post" class="inline">
                     @method('DELETE')
                     @csrf
                     <button class="btn waves-effect red" type="submit" name="btSendDelete"><i class="material-icons">delete</i> Supprimer</button>
                 </form>
             </div>
         </div>
+    </div>
+    <div class="row">
+        <div class="col m8">
+            <h2>{{ $creation->name }}</h2>
+            <p>{{ $creation->description }}</p>
+        </div>
+        
     </div>
 </article>
 @endsection
