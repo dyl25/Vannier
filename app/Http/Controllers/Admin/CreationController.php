@@ -74,6 +74,8 @@ class CreationController extends Controller
 
         $creation->categories()->attach(request('category'));
 
+        session()->flash('notification', 'La création à bien été ajoutée!');
+
         return redirect()->route('admin.creations.index');
     }
 
@@ -138,6 +140,8 @@ class CreationController extends Controller
         //update pivot table
         $creation->categories()->sync(request('category'));
 
+        session()->flash('notification', 'Création  mise à jour');
+
         return redirect()->route('admin.creations.index');
     }
 
@@ -156,6 +160,8 @@ class CreationController extends Controller
         $creation->categories()->detach();
 
         $creation->delete();
+
+        session()->flash('notification', 'Création supprimée!');
 
         return redirect()->route('admin.creations.index');
     }

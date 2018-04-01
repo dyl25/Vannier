@@ -51,6 +51,8 @@ class ArticleController extends Controller
             'content' => request('content')
         ]);
 
+        session()->flash('notification', 'Le billet à bien été ajouté!');
+
         return redirect()->route('admin.articles.index');
     }
 
@@ -99,6 +101,8 @@ class ArticleController extends Controller
             'content' => request('content')
         ]);
 
+        session()->flash('notification', 'Billet mis à jour!');
+
         return redirect()->route('admin.articles.index');
     }
 
@@ -111,6 +115,8 @@ class ArticleController extends Controller
     public function destroy(Article $article)
     {
         $article->delete();
+
+        session()->flash('notification', 'Le billet à bien été supprimé!');
 
         return redirect()->route('admin.articles.index');
     }

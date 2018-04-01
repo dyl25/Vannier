@@ -54,6 +54,7 @@
                         </ul>
                     </nav>
                     <a href="#" data-activates="nav-mobile" class="button-collapse hide-on-med-and-up"><i class="material-icons">menu</i></a>
+                    @include('admin.notification')
                     @yield('content')
                 </div>
             </main>
