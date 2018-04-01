@@ -9,6 +9,7 @@ Espace article
 <section class="card-panel grey lighten-4 hoverable">
     <h2>Liste des articles <i class="material-icons medium">library_books</i></h2>
     <a href="{{ route('admin.articles.create') }}" class="btn btn-primary">Ajouter un article</a>
+    <articles></articles>
     <table class="bordered highlight">
         <thead>
             <tr>

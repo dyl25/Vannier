@@ -19,7 +19,7 @@
         <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
     </head>
     <body>
-        <div class="row">
+        <div class="row" id="app">
             <header>
                 @include('admin.layouts.sidenav')
             </header>
@@ -58,5 +58,7 @@
                 </div>
             </main>
         </div>
+
+        <script src="{{ mix('js/app.js') }}"></script>
     </body>
 </html>
