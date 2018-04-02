@@ -45,19 +45,20 @@ Brins d'osier - Accueil
         <h2>Mes créations</h2>
         @forelse($creations as $creation)
         <div class="col s12 m4">
-            <div class="card medium hoverable">
+            <article class="card medium hoverable">
                 <div class="card-image waves-effect waves-block waves-light">
-                    <img class="activator responsive-img" src="{{ asset('img/creations/'.$creation->image) }}">
+                    <a href="{{ route('creations.show', $creation->id) }}"><img class="activator responsive-img" src="{{ asset('img/creations/'.$creation->image) }}"></a>
                 </div>
                 <div class="card-content">
-                    <span class="card-title activator grey-text text-darken-4">{{$creation->name}}<i class="material-icons right">more_vert</i></span>
-                    <p><a href="#">This is a link</a></p>
+                    <span class="card-title activator grey-text text-darken-4">{{ $creation->name }}</span>
+                    <p>{{ str_limit($creation->description, 150) }}</p>
+                    <p>id= {{$creation->id}}</p>
                 </div>
-                <div class="card-reveal">
-                    <span class="card-title grey-text text-darken-4">{{$creation->name}}<i class="material-icons right">close</i></span>
-                    <p>{{$creation->description}}</p>
+                <div class="card-action">
+                <a href="{{ route('creations.show', $creation->id) }}">Voir la création</a>
+                <a href="#">Créé le {{$creation->created_at->format('d/m/Y')}}</a>
                 </div>
-            </div>
+            </article>
         </div>
         @empty
         <div class="col m5 offset-m3 offset-s3">

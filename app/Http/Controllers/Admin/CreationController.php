@@ -7,6 +7,8 @@ use App\Http\Controllers\Controller;
 use App\Creation;
 use App\Category;
 use Intervention\Image\Facades\Image;
+use App\Http\Requests\StoreCreationRequest;
+use App\Http\Requests\UpdateCreationRequest;
 
 class CreationController extends Controller
 {
@@ -39,14 +41,8 @@ class CreationController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreCreationRequest $request)
     {
-        $this->validate($request, [
-            'category' => 'bail|required|exists:categories,id|max:3',
-            'name' => 'bail|required|min:5|max:191',
-            'content' => 'bail|required|min:10',
-            'creationImage' => 'nullable|image'
-        ]);
 
         $creation = new Creation();
 
@@ -59,11 +55,6 @@ class CreationController extends Controller
             $image = $request->file('creationImage');
             $fileName = time() . '.' . $image->getClientOriginalExtension();
             $location = public_path('img/creations/' . $fileName);
-
-            /*Image::make($image)->resize(null, 600, function ($constraint) {
-                $constraint->aspectRatio();
-            })
-                ->save($location);*/
 
             Image::make($image)->fit(900, 550)->save($location);
 
@@ -110,7 +101,7 @@ class CreationController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Creation $creation)
+    public function update(UpdateCreationRequest $request, Creation $creation)
     {
         $this->validate($request, [
             'category' => 'bail|required|exists:categories,id|max:3',
