@@ -144,8 +144,10 @@ class CreationController extends Controller
      */
     public function destroy(Creation $creation)
     {
+        if ($creation->image) {
         //delete the picture of the creation
-        unlink(public_path('img/creations/' . $creation->image));
+            unlink(public_path('img/creations/' . $creation->image));
+        }
 
         //detach the creation from the pivot table
         $creation->categories()->detach();
