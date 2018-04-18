@@ -10,7 +10,7 @@ Vue de l'article {{$article->title}}
     <div class="row">
         <div class="col m8">
             <h2>{{ $article->title }}</h2>
-            <p>{{ $article->content }}</p>
+            <p>{{ htmlspecialchars($article->content) }}</p>
         </div>
         <div class="col 4">
             <div class="card-panel">

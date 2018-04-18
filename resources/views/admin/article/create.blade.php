@@ -17,19 +17,25 @@ Ajout d'un article
             @csrf
 
             <!-- Text input-->
-            <div class="input-field">
-                <input id="title" name="title" type="text" value="{{ old('title') }}" class="validate" required="required">
-                <label for="title">Titre</label> 
+            <div class="row">
+                <div class="input-field">
+                    <input id="title" name="title" type="text" value="{{ old('title') }}" class="validate" required="required">
+                    <label for="title">Titre</label> 
+                </div>
             </div>
 
             <!-- Textarea -->
-            <div class="input-field">                  
-                <textarea class="materialize-textarea" id="content" name="content" class="validate" required="required">{{ old('content') }}</textarea>
-                <label for="content">Contenu de l'article</label>
+            <div class="row">
+                <div class="input-field">
+                    <input type="hidden" name="content" id="content">                 
+                    <trix-editor input="content" class="validate"></trix-editor>
+                </div>
             </div>
 
-            <button name="btSendArticle" class="btn green" type="submit">Ajouter l'article</button>
-            <input type="reset" value="Réinitialiser le formulaire" class="btn red">
+            <div class="row">
+                <button name="btSendArticle" class="btn green" type="submit">Ajouter l'article</button>
+                <input type="reset" value="Réinitialiser le formulaire" class="btn red">
+            </div>
 
         </fieldset>
     </form>

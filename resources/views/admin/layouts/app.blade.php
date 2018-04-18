@@ -13,10 +13,14 @@
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
         <link href="{{ asset('css/style.css') }}" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/trix/0.11.2/trix.css">
+        
         <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
         <script src="{{ asset('js/app.js') }}"></script>
         <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/trix/0.11.2/trix.js"></script>
+
     </head>
     <body>
         <div class="row">
