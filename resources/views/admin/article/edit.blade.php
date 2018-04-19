@@ -23,9 +23,11 @@ Modification d'un article
             </div>
 
             <!-- Textarea -->
-            <div class="input-field">                  
-                <textarea class="materialize-textarea" id="content" name="content" class="validate" required="required">{{ $article->content }}</textarea>
-                <label for="content">Contenu de l'article</label>
+            <div class="row">
+                <div class="input-field">
+                    <input type="hidden" name="content" id="content" value="{{ $article->content }}">                 
+                    <trix-editor input="content" class="validate"></trix-editor>
+                </div>
             </div>
 
             <button name="btSendArticle" class="btn green" type="submit">Modifier l'article</button>
