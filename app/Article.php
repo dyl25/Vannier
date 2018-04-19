@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Stevebauman\Purify\Purify;
 
 class Article extends Model
 {
@@ -12,5 +13,9 @@ class Article extends Model
     public function author()
     {
         return $this->belongsTo(User::class, 'author_id');
+    }
+
+    public function getContentAttribute($content) {
+        return \Purify::clean($content);
     }
 }
