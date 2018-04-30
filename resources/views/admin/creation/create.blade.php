@@ -16,6 +16,7 @@ Ajout d'une création
         <fieldset>
             @csrf
 
+            <!-- Checkbox -->
             <div class="input-field">
                 <select multiple name="category[]">
                     <option value="" disabled>Choisir des catégories</option>
@@ -33,10 +34,11 @@ Ajout d'une création
 
             <!-- Textarea -->
             <div class="input-field">                  
-                <textarea class="materialize-textarea" id="content" name="content" class="validate" required="required">{{ old('content') }}</textarea>
-                <label for="content">Description de la création</label>
+                <input type="hidden" name="content" id="content">                 
+                <trix-editor input="content" class="validate"></trix-editor>
             </div>
 
+            <!-- File -->
             <div class="file-field input-field">
                 <div class="btn">
                     <span>Image de la création</span>

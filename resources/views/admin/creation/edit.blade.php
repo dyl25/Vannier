@@ -34,8 +34,8 @@ Modification d'une création
 
             <!-- Textarea -->
             <div class="input-field">                  
-                <textarea class="materialize-textarea" id="content" name="content" class="validate" required="required">{{ $creation->description }}</textarea>
-                <label for="content">Description de la création</label>
+                <input type="hidden" name="content" id="content" value="{{ $creation->description }}">                 
+                <trix-editor input="content" class="validate"></trix-editor>
             </div>
 
             <div class="file-field input-field">
