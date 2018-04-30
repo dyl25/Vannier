@@ -51,7 +51,7 @@ Brins d'osier - Accueil
                 </div>
                 <div class="card-content">
                     <span class="card-title activator grey-text text-darken-4">{{ $creation->name }}</span>
-                    <p>{{ str_limit($creation->description, 150) }}</p>
+                    <p>{!! str_limit($creation->description, 150) !!}</p>
                     <p>id= {{$creation->id}}</p>
                 </div>
                 <div class="card-action">
@@ -92,7 +92,7 @@ Brins d'osier - Accueil
             <article class="card small hoverable">
                 <div class="card-content">
                     <a href="{{ route('articles.show', $article->id) }}" class="card-title grey-text text-darken-4">{{ $article->title }}</a>
-                    <p>{{ str_limit($article->content, 150) }}</p>
+                    <p>{!! str_limit($article->content, 150) !!}</p>
                     <p>id= {{$article->id}}</p>
                 </div>
                 <div class="card-action">

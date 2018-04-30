@@ -8,7 +8,7 @@
 <div class="container">
     <div class="card-panel hoverable">
         <h2>{{ $article->title }}</h2>
-        <p class="flow-text">{{ $article->content }}</p>
+        <p class="flow-text">{!! $article->content !!}</p>
     </div>
 </div>
 @endsection

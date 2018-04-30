@@ -10,19 +10,16 @@
                 <h5 class="white-text">Links</h5>
                 <ul>
                     <li>
-                        <a href="#" class="white-text">Accueil</a>
+                        <a href="{{ route('home') }}" class="white-text">Accueil</a>
                     </li>
                     <li>
-                        <a class="white-text">Informations</a>
+                        <a href="{{ route('creations') }}" class="white-text">Créations</a>
                     </li>
                     <li>
-                        <a class="white-text">Articles</a>
+                        <a href="{{ route('articles') }}" class="white-text">Articles</a>
                     </li>
                     <li>
-                        <a class="white-text">Résultats</a>
-                    </li>
-                    <li>
-                        <a class="white-text">Mon espace</a>
+                        <a href="{{ route('contact') }}" class="white-text">Contact</a>
                     </li>
                 </ul>
             </div>

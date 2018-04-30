@@ -18,7 +18,7 @@
                 </p>
             </div>
             <hr>
-            <p class="flow-text">{{ $creation->description }}</p>
+            <p class="flow-text">{!! $creation->description !!}</p>
         </article>
     </div>
 </div>

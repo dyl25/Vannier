@@ -25,7 +25,7 @@ Brins d'osier - Mes créations
                     </div>
                     <div class="card-content">
                         <span class="card-title activator grey-text text-darken-4">{{ $creation->name }}</span>
-                        <p>{{ str_limit($creation->description, 150) }}</p>
+                        <p>{!! str_limit($creation->description, 150) !!}</p>
                         <p>id= {{$creation->id}}</p>
                     </div>
                     <div class="card-action">

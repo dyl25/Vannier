@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Stevebauman\Purify\Purify;
 
 class Creation extends Model
 {
@@ -21,6 +22,10 @@ class Creation extends Model
     public function categories()
     {
         return $this->belongsToMany(Category::class);
+    }
+
+    public function getDescriptionAttribute($description) {
+        return \Purify::clean($description);
     }
 
     /**
